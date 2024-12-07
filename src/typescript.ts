@@ -54,3 +54,19 @@ let product2 = { title: 'pants', price: 'free'};
 let product3 = { title: 'Shoes'};
 let products: { title: string, price?: number | string }[] = [product1, product2, product3];
 // products.push({ title: 'Shoes', price: 'expensive' }); // This will result in a TypeScript error
+
+/**
+ * Function params and function returns
+ */
+
+const names:string[] = ['Ivan', 'Georgi', 'Stoqn'];
+function isNameInList(name: string): boolean {
+  return names.includes(name);
+}
+
+let nameToCheck: string = 'Ivan';
+if (isNameInList(nameToCheck)) {
+  console.log(`${nameToCheck} is in the list`);
+} else {
+  console.log(`${nameToCheck} is not in the list`);
+}
