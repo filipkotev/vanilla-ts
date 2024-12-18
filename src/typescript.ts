@@ -58,7 +58,6 @@ let products: { title: string, price?: number | string }[] = [product1, product2
 /**
  * Function params and function returns
  */
-
 const names:string[] = ['Ivan', 'Georgi', 'Stoqn'];
 function isNameInList(name: string): boolean {
   return names.includes(name);
@@ -70,3 +69,18 @@ if (isNameInList(nameToCheck)) {
 } else {
   console.log(`${nameToCheck} is not in the list`);
 }
+
+
+/**
+ * Functions - optional and default parameters
+ */
+function processInput ( input: string | number ) {
+  if (typeof input === 'number') {
+    console.log(input * 2);
+  } else {
+    console.log(input.toUpperCase());
+  }
+}
+
+processInput(15);
+processInput('sup');
