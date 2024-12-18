@@ -82,5 +82,27 @@ function processInput ( input: string | number ) {
   }
 }
 
-processInput(15);
-processInput('sup');
+// processInput(15);
+// processInput('sup');
+
+
+/**
+ * Functions - Using Objects as Function Parameters
+ */
+
+function processData (
+  input: string | number,
+  config: { reverse: boolean } = { reverse: false }
+): string | number {
+  if (typeof input === 'number') {
+    return input * input;
+  } else {
+    return config.reverse
+      ? input.toUpperCase().split('').reverse().join('')
+      : input.toUpperCase();
+  }
+}
+
+console.log(processData(10)); // Output: 100
+console.log(processData('Hello')); // Output: HELLO
+console.log(processData('Hello', { reverse: true })); // Output: OLLEH
