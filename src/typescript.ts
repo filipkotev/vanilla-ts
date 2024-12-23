@@ -134,5 +134,30 @@ const alice: Employee = { id: 1, name: 'Alice', department: 'Sales' };
 const steve: Employee = { id: 1, name: 'Steve', department: 'HR' };
 const bob: Manager = { id: 2, name: 'Bob', employees: [alice, steve] };
 
-printStaffDetails(alice); // Outputs: Alice is an employee in the Sales department.
-printStaffDetails(bob);
+// printStaffDetails(alice); // Outputs: Alice is an employee in the Sales department.
+// printStaffDetails(bob);
+
+/**
+ * Interface Fundamentals
+ */
+interface Computer {
+  readonly id: number, // Cannot be changed once initialized
+  brand: string,
+  ram: number,
+  storage?: number, // optional property
+  upgradeRam(increase: number): number,
+}
+
+const myPc: Computer = {
+  id: 1,
+  brand: 'Dell',
+  ram: 16,
+  upgradeRam(amount: number) {
+    this.ram += amount;
+    return this.ram
+  }
+}
+
+myPc.storage = 512;
+console.log(myPc.upgradeRam(16));
+console.log(myPc);
