@@ -65,9 +65,9 @@ function isNameInList(name: string): boolean {
 
 let nameToCheck: string = 'Ivan';
 if (isNameInList(nameToCheck)) {
-  console.log(`${nameToCheck} is in the list`);
+  // console.log(`${nameToCheck} is in the list`);
 } else {
-  console.log(`${nameToCheck} is not in the list`);
+  // console.log(`${nameToCheck} is not in the list`);
 }
 
 
@@ -179,7 +179,7 @@ interface SeniorManager extends Person {
 }
 
 const employee: Person | DogOwner | SeniorManager = getEmployee();
-console.log(employee);
+// console.log(employee);
 
 function  getEmployee(): Person | DogOwner | SeniorManager {
   const random = Math.random();
@@ -196,8 +196,10 @@ function  getEmployee(): Person | DogOwner | SeniorManager {
   } else {
     return {
       name: 'Bob',
-      managePeople: () => console.log('Managing people...'),
-      delegateTasks: () => console.log('Delegating tasks...'),
+      managePeople: () => name,
+      delegateTasks: () => name,
+      // managePeople: () => console.log('Managing people...'),
+      // delegateTasks: () => console.log('Delegating tasks...'),
     }
   }
 }
@@ -209,3 +211,32 @@ function isManager( obj: Person | DogOwner | SeniorManager ): obj is SeniorManag
 if (isManager(employee)) {
   employee.delegateTasks();
 }
+
+/**
+ * Enums and Tuples
+ */
+enum UserRole {
+  Admin,
+  Manager,
+  Employee
+}
+
+type User = {
+  id: number,
+  name: string,
+  role: UserRole,
+  contact: [string, string] // Tuple: [email, phone]
+}
+
+function createUser (user: User): User {
+  return user;
+}
+
+const user = createUser({
+  id: 1,
+  name: 'Steven',
+  role: UserRole.Admin,
+  contact: ['steven@gmail.bob', '091245049845']
+})
+
+// console.log(user);
