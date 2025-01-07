@@ -159,5 +159,53 @@ const myPc: Computer = {
 }
 
 myPc.storage = 512;
-console.log(myPc.upgradeRam(16));
-console.log(myPc);
+// console.log(myPc.upgradeRam(16));
+// console.log(myPc);
+
+/**
+ * Interface Advanced - merging, extend, typeguard
+ */
+interface Person {
+  name: string,
+}
+
+interface DogOwner extends Person {
+  dogName: string,
+}
+
+interface SeniorManager extends Person {
+  managePeople(): void,
+  delegateTasks(): void,
+}
+
+const employee: Person | DogOwner | SeniorManager = getEmployee();
+console.log(employee);
+
+function  getEmployee(): Person | DogOwner | SeniorManager {
+  const random = Math.random();
+
+  if (random < 0.33) {
+    return {
+      name: 'john'
+    }
+  } else if (random < 0.66) {
+    return {
+      name: 'Sam',
+      dogName: 'Bruno'
+    }
+  } else {
+    return {
+      name: 'Bob',
+      managePeople: () => console.log('Managing people...'),
+      delegateTasks: () => console.log('Delegating tasks...'),
+    }
+  }
+}
+
+function isManager( obj: Person | DogOwner | SeniorManager ): obj is SeniorManager {
+  return 'managePeople' in obj;
+}
+
+if (isManager(employee)) {
+  employee.delegateTasks();
+}
